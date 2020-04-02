@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改个人信息</title>
+</head>
+<body>
+<h1>修改个人信息</h1>
+<a href="{% url 'myauth:index' %}">主页</a>
+<a href="{% url 'myauth:changePassword' %}">修改密码</a>
+<a href="{% url 'myauth:userCenter' %}">个人中心</a>
+<a href="{% url 'myauth:logout' %}">注销</a>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ editorForm.errors }}
+    {{ editorForm.as_p }}
+</form>
+</body>
+</html>

@@ -1,10 +1,37 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm
 from .forms import DIYUserCreationForm
 from .models import formalVIP
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
+#登录才可以修改查看
+@login_required(login_url='myauth:login')
+def userCenter(request):#用户中心
+    context={'user':request.user}#request.user django模型自带的User
+    return render(request,'myauth/userCenter.html',context)
+
+@login_required(login_url='myauth:login')
+def editorProfile(request):#编辑个人信息
+    if request.method == "POST":
+        editorForm = UserChangeForm(request.POST,instance=request.user)#你要修改谁要写清楚
+        if editorForm.is_valid():
+            editorForm.save()  # 创建并保存,用户信息已经改变了
+            return redirect('myauth:userCenter')
+    else:
+        editorForm = UserChangeForm()
+    context = {}
+    context["editorForm"] = editorForm
+    return render(request, 'myauth/editorProfile.html', context)
+
+@login_required(login_url='myauth:login')
+def changePassword(request):# 更改密码
+    if request.method=="POST":
+        return redirect('myauth:userCenter')
+    else:
+        return render(request,'myauth/changePassword.html')
 
 def index(request):
     return render(request,'myauth/home.html')
@@ -33,7 +60,7 @@ def myregister(request):
     return render(request,'myauth/register.html',context)
 
 def myregister(request):
-    if request.method=="POST":
+    if request.method == "POST":
         registerForm = DIYUserCreationForm(request.POST)
         if registerForm.is_valid():
             registerForm.save()
@@ -47,4 +74,5 @@ def myregister(request):
     context = {}
     context["registerForm"]=registerForm
     return render(request,'myauth/register.html',context)
+
 
