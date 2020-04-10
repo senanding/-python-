@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+{% load static %}
+<link rel="stylesheet" type="text/css" herf = "{% static "css/loginpage.css" %}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+</head>
+<body>
+<style type="text/css">
+html, body, ul, li, ol, p, h1, h2, h3, h4, h5, h6, form,input,img { margin:0; padding:0;}
+li{ list-style:none;}
+h1,h2,h3,h4,h5,h6{
+font-size: 100%;
+font-weight: normal;
+}
+a{color:#3333;text-decoration:none;}
+a:hover{color:#f40; text-decoration:underline;}
+body{ font-size:14px;}
+.wrap{ width:1020px; margin:0  auto;}
+/*CSS初始化结束*/
+
+    *{
+        padding: 0;
+        margin: 0;
+        font-family: 'Open Sans Light';
+        letter-spacing: .05em;
+    }
+    html{
+        height: 100%;
+    }
+
+    body{
+        height: 100%;
+    }
+
+    .container{
+        height: 100%;
+        background-image: linear-gradient(to right,#fbc2ed,#a6c1ee);
+    }
+    .login-wrapper{
+        background-color: #ffffff;
+        width: 350px;
+        height: 500px;
+        border-radius: 15px;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .header{
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 200px;
+    }
+</style>
+
+<div class="container">
+    <div class="login-wrapper">
+        <div class="header">登录</div>
+        <form action="" method="POST">
+        {% csrf_token %}
+            {{ error }}
+        <input type="text" name="username" placeholder="请输入用户名">
+        <input type="password" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+        </form>
+        <a href="{% url 'myauth:index'  %}">主页</a>
+    </div>
+</div>
+</body>
+</html>

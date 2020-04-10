@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+</head>
+<body>
+<h1>个人中心</h1>
+<a href="{% url 'myauth:index' %}">主页</a>
+<a href="{% url 'myauth:changePassword' %}">修改密码</a>
+<a href="{% url 'myauth:editorProfile' %}">编辑个人信息</a>
+<a href="{% url 'myauth:bind' %}">绑定情侣</a>
+<a href="{% url 'myauth:logout' %}">退出登录</a>
+<div>
+    <ul>
+        <li>{{ user.username }}</li>
+        <li>{{ user.password }}</li>
+        <li>{{ user.email }}</li>
+        <li>{{ user.formalvip.nick }}</li>
+        <li>{{ user.formalvip.birthday }}</li>
+    </ul>
+</div>
+</body>
+</html>

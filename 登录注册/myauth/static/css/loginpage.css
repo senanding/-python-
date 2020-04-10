@@ -1,0 +1,21 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, ul, li, ol, p, h1, h2, h3, h4, h5, h6, form,input,img { margin:0; padding:0;}
+li{ list-style:none;}
+h1,h2,h3,h4,h5,h6{
+font-size: 100%;
+font-weight: normal;
+}
+a{color:#3333;text-decoration:none;}
+a:hover{color:#f40; text-decoration:underline;}
+body{ font-size:14px;}
+.wrap{ width:1020px; margin:0  auto;}
+/*CSS初始化结束*/
+
+.top{
+	height:38px;
+	border-top:pink solid 4px;
+	border-bottom:#e4e7ec solid 1px;
+	background:-webkit-linear-gradient(#fff 0%,#f1f3f5 100%);
+	background:linear-gradient(#fff 0%,#f1f3f5 100%);
+	}
