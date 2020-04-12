@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html lang="zh-hans">
+
+{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
 </head>
 <body>
+<style type="text/css">
+    *{
+        padding: 0;
+        margin: 0;
+        font-family: 'Open Sans Light';
+        letter-spacing: .05em;
+    }
+    html{
+        height: 100%;
+    }
+
+    body{
+        height: 100%;
+    }
+    .container{
+        height: 100%;
+        background-image: linear-gradient(to right,#fbc2ed,#a6c1ee);
+    }
+</style>
+
+<div class="container">
     <h1>注册</h1>
     <a href="{% url 'myauth:index'  %}">主页</a>
     <form action="" method="post">
@@ -15,7 +39,6 @@
             <span class="helptext">必填。150个字符或者更少。包含字母，数字和仅有的@/./+/-/_符号。</span>
         </p>
         {% if registerForm.errors.username %}
-            <p style="color: red;">用户名已经存在或者格式不符合要求</p>
             {{ registerForm.errors.username }}
         {% endif %}
 
@@ -47,5 +70,6 @@
         {{ registerForm.errors.email}}
         <button type="submit">注册</button>
     </form>
+</div>
 </body>
 </html>
